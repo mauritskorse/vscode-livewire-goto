@@ -4,11 +4,11 @@
 	"description": "Livewire goto vscode extension",
 	"version": "1.0.0",
 	"icon": "img/icon.png",
-	"publisher": "lakuapik",
-	"homepage": "https://github.com/lakuapik/vscode-livewire-goto",
+	"publisher": "lennardv",
+	"homepage": "https://github.com/lennardv2/vscode-livewire-goto",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/lakuapik/vscode-livewire-goto.git"
+		"url": "https://github.com/lennardv2/vscode-livewire-goto.git"
 	},
 	"engines": {
 		"vscode": "^1.43.0"
