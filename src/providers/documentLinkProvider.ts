@@ -1,15 +1,8 @@
 'use strict';
 
 import {
-    Uri,
-    Range,
-    Position,
-    workspace,
-    DocumentLink,
-    TextDocument,
-    ProviderResult,
-    DocumentLinkProvider as vsDocumentLinkProvider,
-} from 'vscode'
+    DocumentLink, DocumentLinkProvider as vsDocumentLinkProvider, Position, ProviderResult, Range, TextDocument, Uri, workspace
+} from 'vscode';
 import * as util from '../util';
 
 export default class DocumentLinkProvider implements vsDocumentLinkProvider {
@@ -27,12 +20,14 @@ export default class DocumentLinkProvider implements vsDocumentLinkProvider {
             const matches = line.text.matchAll(util.regexJumpFile);
 
             for (const match of matches) {
+                const matchedPath = match[3];
+
                 const startColumn = new Position(
                     line.lineNumber,
-                    line.text.indexOf(match[1])
+                    line.text.indexOf(matchedPath)
                 );
-                const endColumn = startColumn.translate(0, match[1].length);
-                const jumpPath = cacheMap[match[1]];
+                const endColumn = startColumn.translate(0, matchedPath.length);
+                const jumpPath = cacheMap[matchedPath];
 
                 if (jumpPath == undefined) continue;
 

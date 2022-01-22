@@ -3,7 +3,8 @@
 import * as fs from 'fs';
 
 // TODO: move it to config
-export const regexJumpFile = new RegExp('@livewire\\([\'\"](.*?)[\'\"]\\)', 'g');
+// export const regexJumpFile = new RegExp('@livewire\\([\'\"](.*?)[\'\"]\\)', 'g');
+export const regexJumpFile = /((@livewire\([ \t\n]{0,}[\'\"])|<livewire:)(.*?)([\'\"][\),]|([ \t\n]|>))/g;
 export const regexCacheMap = new RegExp('\'(.*?)\' \=\> \'(.*?)\'', 'g');
 
 interface CacheMap {

@@ -1,13 +1,7 @@
 'use strict';
 
 import {
-    Hover,
-    Position,
-    workspace,
-    TextDocument,
-    MarkdownString,
-    ProviderResult,
-    HoverProvider as vsHoverProvider,
+    Hover, HoverProvider as vsHoverProvider, MarkdownString, Position, ProviderResult, TextDocument, workspace
 } from 'vscode';
 import * as util from '../util';
 
@@ -27,7 +21,8 @@ export default class HoverProvider implements vsHoverProvider {
         const matches = text.matchAll(util.regexJumpFile);
 
         for (const match of matches) {
-            const jumpPath = cacheMap[match[1]];
+            const matchedPath = match[3];
+            const jumpPath = cacheMap[matchedPath];
             const jumpPathShow = jumpPath.replace(wsPath + '/', '');
 
             const markdown = '\`class:\`' + `[${jumpPathShow}](${jumpPath}) \n`;
