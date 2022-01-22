@@ -1,6 +1,6 @@
 {
 	"name": "livewire-goto-updated",
-	"displayName": "Livewire Goto",
+	"displayName": "Livewire goto",
 	"description": "Livewire goto vscode extension",
 	"version": "1.0.1",
 	"icon": "img/icon.png",
