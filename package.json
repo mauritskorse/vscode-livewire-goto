@@ -2,7 +2,7 @@
 	"name": "livewire-goto-updated",
 	"displayName": "Livewire goto",
 	"description": "Livewire goto vscode extension",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"icon": "img/icon.png",
 	"publisher": "lennardv",
 	"homepage": "https://github.com/lennardv2/vscode-livewire-goto",
