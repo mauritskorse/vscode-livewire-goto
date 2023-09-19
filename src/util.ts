@@ -38,3 +38,9 @@ export function convertNamespaceToFilePath(namespace: string): string {
 
     return namespace + '.php';
 }
+
+export function convertToFilePath(wsPath:string, s: string): string {
+    s = (s.replace(/-./g, x=>x[1].toUpperCase())).replace(/\../g, x=>'/' + x[1].toUpperCase());
+    s = s[0].toUpperCase() + s.substring(1) + ".php";
+    return wsPath + '/app/Livewire/' + s;     
+}

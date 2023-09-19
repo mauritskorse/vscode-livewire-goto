@@ -13,8 +13,7 @@ export default class DocumentLinkProvider implements vsDocumentLinkProvider {
 
         if (!wsPath) return;
 
-        const cacheMap = util.getLivewireCacheMap(wsPath);
-
+        // const cacheMap = util.getLivewireCacheMap(wsPath);
         for (let index = 0; index < document.lineCount; index++) {
             const line = document.lineAt(index);
             const matches = line.text.matchAll(util.regexJumpFile);
@@ -27,7 +26,8 @@ export default class DocumentLinkProvider implements vsDocumentLinkProvider {
                     line.text.indexOf(matchedPath)
                 );
                 const endColumn = startColumn.translate(0, matchedPath.length);
-                const jumpPath = cacheMap[matchedPath];
+
+                const jumpPath = util.convertToFilePath(wsPath, matchedPath);
 
                 if (jumpPath == undefined) continue;
 

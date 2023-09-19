@@ -1,6 +1,7 @@
 # Livewire Goto
 
-Livewire goto vscode extension. This extension is created by @lakuapik, but archived. It's continued here.
+Livewire goto vscode extension. This extension is created by @lakuapik and @lennardv, but archived. It's continued here.
+Support for livewire v3
 
 ![alt text](https://github.com/lakuapik/vscode-livewire-goto/raw/master/img/preview.gif "Preview")
 

@@ -4,6 +4,7 @@ import {
     Hover, HoverProvider as vsHoverProvider, MarkdownString, Position, ProviderResult, TextDocument, workspace
 } from 'vscode';
 import * as util from '../util';
+import DocumentLinkProvider from './documentLinkProvider';
 
 export default class HoverProvider implements vsHoverProvider {
     provideHover(document: TextDocument, position: Position): ProviderResult<Hover> {
@@ -15,14 +16,15 @@ export default class HoverProvider implements vsHoverProvider {
 
         if (!wsPath) return;
 
-        const cacheMap = util.getLivewireCacheMap(wsPath);
+        // const cacheMap = util.getLivewireCacheMap(wsPath);
 
         const text = document.getText(ranges);
         const matches = text.matchAll(util.regexJumpFile);
 
         for (const match of matches) {
             const matchedPath = match[3];
-            const jumpPath = cacheMap[matchedPath];
+            const jumpPath =  util.convertToFilePath(wsPath, matchedPath);
+
             const jumpPathShow = jumpPath.replace(wsPath + '/', '');
 
             const markdown = '\`class:\`' + `[${jumpPathShow}](${jumpPath}) \n`;
