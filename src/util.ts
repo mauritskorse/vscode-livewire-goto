@@ -44,7 +44,7 @@ export function convertToFilePath(wsPath:string, s: string): string {
     s = (s.replace(/-./g, x=>x[1].toUpperCase())).replace(/\../g, x=>'/' + x[1].toUpperCase());
     s = s[0].toUpperCase() + s.substring(1) + ".php";
     
-    const path = workspace.getConfiguration('livewire-goto-updated-3').pathComponents;
+    const pathComponents = workspace.getConfiguration('livewire-goto-updated-3').pathComponents;
 
-    return wsPath + path + '/' + s;   
+    return wsPath + pathComponents + '/' + s;
 }
