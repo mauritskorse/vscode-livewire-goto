@@ -26,7 +26,7 @@
 			"type": "object",
 			"title": "Livewire goto v3 configuration",
 			"properties": {
-				"livewire-goto-updated-3.path": {
+				"livewire-goto-updated-3.pathComponents": {
 					"type": "string",
 					"default": "/app/Livewire",
 					"description": "Root path to the Livewire components folder"
