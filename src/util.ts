@@ -1,6 +1,7 @@
 'use strict';
 
 import * as fs from 'fs';
+import { workspace } from 'vscode';
 
 // TODO: move it to config
 // export const regexJumpFile = new RegExp('@livewire\\([\'\"](.*?)[\'\"]\\)', 'g');
@@ -42,5 +43,8 @@ export function convertNamespaceToFilePath(namespace: string): string {
 export function convertToFilePath(wsPath:string, s: string): string {
     s = (s.replace(/-./g, x=>x[1].toUpperCase())).replace(/\../g, x=>'/' + x[1].toUpperCase());
     s = s[0].toUpperCase() + s.substring(1) + ".php";
-    return wsPath + '/app/Livewire/' + s;     
+    
+    const path = workspace.getConfiguration('livewire-goto-updated-3').pathComponents;
+
+    return wsPath + path + '/' + s;   
 }
