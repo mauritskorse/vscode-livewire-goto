@@ -10,11 +10,15 @@ export default class HoverProvider implements vsHoverProvider {
     provideHover(document: TextDocument, position: Position): ProviderResult<Hover> {
         let ranges = document.getWordRangeAtPosition(position, util.regexJumpFile);
 
-        if (!ranges) return;
+        if (!ranges) {
+            return;
+        }
 
         const wsPath = workspace.getWorkspaceFolder(document.uri)?.uri.fsPath;
 
-        if (!wsPath) return;
+        if (!wsPath) {
+            return;
+        }
 
         // const cacheMap = util.getLivewireCacheMap(wsPath);
 
@@ -22,8 +26,9 @@ export default class HoverProvider implements vsHoverProvider {
         const matches = text.matchAll(util.regexJumpFile);
 
         for (const match of matches) {
-            const matchedPath = match[3];
-            const jumpPath =  util.convertToFilePath(wsPath, matchedPath);
+            const matchedPath = match[5];
+            const matchedModule = match[4] ? match[4] : false;
+            const jumpPath =  util.convertToFilePath(wsPath, matchedPath, matchedModule);
 
             const jumpPathShow = jumpPath.replace(wsPath + '/', '');
 

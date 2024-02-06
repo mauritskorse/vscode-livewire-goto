@@ -4,11 +4,11 @@
 	"description": "Livewire goto vscode extension for v3",
 	"version": "1.2.0",
 	"icon": "img/icon.png",
-	"publisher": "m4tr1ck",
-	"homepage": "https://github.com/m4tr1ck/vscode-livewire-goto",
+	"publisher": "mauritskorse",
+	"homepage": "https://github.com/mauritskorse/vscode-livewire-goto",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/m4tr1ck/vscode-livewire-goto.git"
+		"url": "https://github.com/mauritskorse/vscode-livewire-goto.git"
 	},
 	"engines": {
 		"vscode": "^1.84.0"
@@ -30,6 +30,11 @@
 					"type": "string",
 					"default": "/app/Livewire",
 					"description": "Root path to the Livewire components folder"
+				},
+				"livewire-goto-updated-3.modules.pathComponents": {
+					"type": "string",
+					"default": "/Modules/{module}/Livewire",
+					"description": "Path to the Livewire components folder withinin a module. Use {module} as a placeholder for the module name"
 				}
 			}
 		}

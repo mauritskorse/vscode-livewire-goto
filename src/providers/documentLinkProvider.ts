@@ -11,7 +11,9 @@ export default class DocumentLinkProvider implements vsDocumentLinkProvider {
 
         const wsPath = workspace.getWorkspaceFolder(document.uri)?.uri.fsPath;
 
-        if (!wsPath) return;
+        if (!wsPath) {
+            return;
+        }
 
         // const cacheMap = util.getLivewireCacheMap(wsPath);
         for (let index = 0; index < document.lineCount; index++) {
@@ -19,7 +21,13 @@ export default class DocumentLinkProvider implements vsDocumentLinkProvider {
             const matches = line.text.matchAll(util.regexJumpFile);
 
             for (const match of matches) {
-                const matchedPath = match[3];
+                // if match[3] is not undefined, then we have a module path
+                // else we have a regular path
+                // group 4 is the module path
+                // group 5 is the regular path
+
+                const matchedModule = match[4] ? match[4] : false;
+                const matchedPath = match[5];
 
                 const startColumn = new Position(
                     line.lineNumber,
@@ -27,9 +35,11 @@ export default class DocumentLinkProvider implements vsDocumentLinkProvider {
                 );
                 const endColumn = startColumn.translate(0, matchedPath.length);
 
-                const jumpPath = util.convertToFilePath(wsPath, matchedPath);
+                const jumpPath = util.convertToFilePath(wsPath, matchedPath, matchedModule);
 
-                if (jumpPath == undefined) continue;
+                if (jumpPath === undefined) {
+                    continue;
+                }
 
                 documentLinks.push(
                     new DocumentLink(
