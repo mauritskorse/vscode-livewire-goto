@@ -7,6 +7,7 @@ Support for livewire v3
 
 ## Features
 
+
 * Livewire goto class
 * Support for livewire:name and @livewire('name', config) syntax
 * Support for [/nWidart/laravel-modules](https://github.com/nWidart/laravel-modules): `<livewire:moduleName::component />` and `@livewire('modulesName::component', config)`
