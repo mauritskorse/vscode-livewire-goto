@@ -6,5 +6,7 @@ Support for livewire v3
 ![alt text](https://github.com/lakuapik/vscode-livewire-goto/raw/master/img/preview.gif "Preview")
 
 ## Features
+
 * Livewire goto class
 * Support for livewire:name and @livewire('name', config) syntax
+* Support for [/nWidart/laravel-modules](https://github.com/nWidart/laravel-modules): `<livewire::moduleName:component />`
